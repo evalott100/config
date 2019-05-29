@@ -1,0 +1,44 @@
+let g:airline#themes#customized#palette = {}
+
+" NORMAL
+let s:N1   = [ '#505050' , '#E4E4E4' , 4  , 8 ]
+let s:N2   = [ '#E4E4E4' , '#0007AF' , 4 , 8 ]
+let s:N3   = [ '#EEEEEE' , '#005F07' , 4  , 8]
+let g:airline#themes#customized#palette.normal = airline#themes#generate_color_map(s:N1, s:N2, s:N3)
+
+" INSERT
+let s:I1 = [ '#505050' , '#E4E4E4' , 0  , 4  ]
+let s:I2 = [ '#E4E4E4' , '#47AF00' , 8 , 4  ]
+let s:I3 = [ '#EEEEEE' , '#2E0700' , 8  , 4 ]
+let g:airline#themes#customized#palette.insert = airline#themes#generate_color_map(s:I1, s:I2, s:I3)
+
+" REPLACE
+let s:R1 = [ '#505050' , '#E4E4E4' , 0  , 6  ]
+let s:R2 = [ '#E4E4E4' , '#AF5F00' , 8 , 6  ]
+let s:R3 = [ '#EEEEEE' , '#075300' , 8  , 6  ]
+let g:airline#themes#customized#palette.replace = airline#themes#generate_color_map(s:R1, s:R2, s:R3)
+
+" VISUAL
+let s:V1 = [ '#505050' , '#E4E4E4' , 0 , 13 ]
+let s:V2 = [ '#E4E4E4' , '#AF2000' , 8 , 13 ]
+let s:V3 = [ '#EEEEEE' , '#072000' , 8  , 13 ]
+let g:airline#themes#customized#palette.visual = airline#themes#generate_color_map(s:V1, s:V2, s:V3)
+
+" INACTIVE
+let s:IA1 = [ '#505050' , '#E4E4E4' , 15 , 8 , '' ]
+let s:IA2 = [ '#E4E4E4' , '#466D713' , 15 , 8 , '' ]
+let s:IA3 = [ '#EEEEEE' , '#324E513' , 15 , 8 , '' ]
+let g:airline#themes#customized#palette.inactive = airline#themes#generate_color_map(s:IA1, s:IA2, s:IA3)
+
+let g:airline#themes#customized#palette.accents = {
+      \ 'red': [ '#ff0000' , '' , 1136 , ''  ]
+      \ }
+
+" CTRLP
+if !get(g:, 'loaded_ctrlp', 0)
+  finish
+endif
+let g:airline#themes#customized#palette.ctrlp = airline#extensions#ctrlp#generate_color_map(
+      \ [ '#E4E4E4' , '#00AFA2' , 100 , 37  , ''     ],
+      \ [ '#EEEEEE' , '#000707' , 231  , 30 , ''     ],
+      \ [ '#505050' , '#E4E4E4' , 513 , 100  , ''     ])

@@ -1,0 +1,189 @@
+set $mod Mod4
+
+# =============== CAT : STYLE ===================
+font pango:Roboto Bold 8
+smart_borders on
+popup_during_fullscreen smart
+for_window [class="UXTerm"] border pixel 2
+#for_window [class="Firefox"] border pixel 2
+#hide_edge_borders both
+
+set $base00 #101218
+set $base01 #1f222d
+set $base02 #252936
+set $base03 #7780a1
+set $base04 #C0C5CE
+set $base05 #d1d4e0
+set $base06 #C9CCDB
+set $base07 #ffffff
+set $base08 #ee829f
+set $base09 #f99170
+set $base0A #ffefcc
+set $base0B #a5ffe1
+set $base0C #97e0ff
+set $base0D #97bbf7
+set $base0E #c0b7f9
+set $base0F #1e90ff
+# Widow Colours
+#                         border  background text    indicator
+client.focused          $base01 $base01    $base07 $base0F
+client.focused_inactive $base02 $base02    $base03 $base0F
+client.unfocused        $base02 $base02    $base03 $base0F
+client.urgent $base02 $base08 $base00 $base0F
+
+#=================================================================
+
+# =============== CAT : NAVIGATION ==============
+floating_modifier $mod
+bindsym $mod+q kill
+bindsym $mod+Shift+q exec systemctl suspend
+bindsym $mod+e layout toggle split
+bindsym $mod+w fullscreen toggle
+bindsym $mod+Tab floating toggle
+bindsym $mod+Shift+Tab focus mode_toggle
+bindsym $mod+space exec --no-startup-id rofi -show run -lines 15 -width 50 -separator-style none -hide-scrollbar -font "Roboto Bold  20" -bw 4 
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split next open
+bindsym $mod+v split h
+bindsym $mod+c split v
+
+
+# =============== CAT : WORKSPACES ==============
+set $w1 "1:1"
+set $w2 "2:2"
+set $w3 "3:3"
+set $w4 "4:4"
+set $w5 "5:5"
+set $w6 "6:6"
+set $w7 "7:7"
+set $w8 "8:8"
+set $w9 "9:9"
+set $w10 "10:0"
+
+# Dundee
+set $mon1 "LVDS1"
+set $mon2 "VGA1"
+
+# Home
+#set $mon1 "LVDS1"
+#set $mon2 "DP2"
+
+workspace $w1 output $mon1
+workspace $w2 output $mon1
+workspace $w3 output $mon1
+workspace $w4 output $mon1
+workspace $w5 output $mon1
+workspace $w6 output $mon2
+workspace $w7 output $mon2
+workspace $w8 output $mon2
+workspace $w9 output $mon2
+workspace $w10 output $mon2
+
+
+# switch to workspace
+bindsym $mod+1 workspace $w1
+bindsym $mod+2 workspace $w2
+bindsym $mod+3 workspace $w3
+bindsym $mod+4 workspace $w4
+bindsym $mod+5 workspace $w5
+bindsym $mod+6 workspace $w6
+bindsym $mod+7 workspace $w7
+bindsym $mod+8 workspace $w8
+bindsym $mod+9 workspace $w9
+bindsym $mod+0 workspace $w10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $w1
+bindsym $mod+Shift+2 move container to workspace $w2
+bindsym $mod+Shift+3 move container to workspace $w3
+bindsym $mod+Shift+4 move container to workspace $w4
+bindsym $mod+Shift+5 move container to workspace $w5
+bindsym $mod+Shift+6 move container to workspace $w6
+bindsym $mod+Shift+7 move container to workspace $w7
+bindsym $mod+Shift+8 move container to workspace $w8
+bindsym $mod+Shift+9 move container to workspace $w9
+bindsym $mod+Shift+0 move container to workspace $w10
+
+
+# =============== CAT : CONTROL =================
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+w exec ~/.config/i3/scripts/monitor.sh
+bindsym XF86Launch1 exec ~/.config/i3/scripts/monitor.sh
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+mode "resize" {
+        bindsym h resize grow width 5 px or 5 ppt
+        bindsym k resize grow height 5 px or 5 ppt
+        bindsym j resize shrink height 5 px or 5 ppt
+        bindsym l resize shrink width 5 px or 5 ppt
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# audio keyboard control
+bindsym $mod+Insert exec cmus-remote --server 127.0.0.1 --passwd password -u
+bindsym $mod+Home exec cmus-remote --server 127.0.0.1 --passwd password -r
+bindsym $mod+End exec cmus-remote --server 127.0.0.1 --passwd password -n
+bindsym $mod+Prior exec --no-startup-id pamixer -i 5
+bindsym $mod+Next exec --no-startup-id pamixer -d 5
+bindsym $mod+Delete exec --no-startup-id pamixer -t
+
+bindsym XF86AudioPlay  exec cmus-remote --server 127.0.0.1 --passwd password -u
+bindsym XF86AudioStop exec cmus-remote --server 127.0.0.1 --passwd password -s
+bindsym XF86AudioPrev exec cmus-remote --server 127.0.0.1 --passwd password -r
+bindsym XF86AudioNext exec cmus-remote --server 127.0.0.1 --passwd password -n
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5
+bindsym XF86AudioMute exec --no-startup-id pamixer -t 5
+
+
+# =============== CAT : APPLICATION =============
+bindsym $mod+t exec uxterm
+bindsym $mod+Shift+t exec ~/.config/i3/scripts/xterm-window.sh
+bindsym $mod+Return exec uxterm
+bindsym $mod+Shift+Return exec ~/.config/i3/scripts/xterm-window.sh
+bindsym $mod+y exec firefox
+bindsym $mod+Shift+y exec firefox --incognito
+bindsym $mod+u exec thunar
+bindsym $mod+Shift+u exec ~/.config/i3/scripts/thunar-window.sh
+bindsym $mod+i exec firefox --app=https://www.messenger.com
+
+
+# =============== CAT : AUTOSTART ===============
+#exec_always --no-startup-id killall compton
+#exec_always --no-startup-id compton
+exec_always --no-startup-id ~/.config/i3/scripts/monitor.sh
+exec_always --no-startup-id xfsettingsd
+exec_always --no-startup-id dropbox
+exec_always --no-startup-id xbanish
+exec_always --no-startup-id xfce4-power-manager
+exec_always --no-startup-id /usr/lib/xfce-polkit/xfce-polkit
+exec_always --no-startup-id xrdb -load ~/.Xresources
+exec_always --no-startup-id tlp start
+
+
+#exec_always --no-startup-id sshfs -o password_stdin eva@192.169.0.14 /mnt/homeserver <<< "ilovescorpion"

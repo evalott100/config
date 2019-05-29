@@ -1,5 +1,7 @@
 export ZSH=/home/eva/.oh-my-zsh
+export CXX=/bin/g++
 alias t='trash'
+alias cmus='cmus --listen 0.0.0.0'
 alias ls='ls --color=auto '
 alias la='ls -al'
 alias y='yaourt'
@@ -8,10 +10,16 @@ alias v='vim'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias r='ranger'
 alias cwm='nvim ~/.config/i3/config'
+alias mv='mv --verbose'
+alias cp='cp --verbose'
+alias find='find -iname'
+alias grep='grep -i'
 
 bindkey -v
 autoload -Uz edit-command-line
 bindkey -M vicmd 'v' edit-command-line
+
+
 
 if [[ $TERM == xterm-termite ]]; then
   . /etc/profile.d/vte.sh
@@ -21,7 +29,7 @@ fi
 ZSH_THEME="gallois"
 CASE_SENSITIVE="true"
 HYPHEN_INSENSITIVE="true"
-#ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="false"
 COMPLETION_WAITING_DOTS="false"
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="dd/mm/yyyy"
@@ -36,6 +44,8 @@ export UPDATE_ZSH_DAYS=13
 export NO_AT_BRIDGE=1
 export PROMPT_COMMAND="pwd > /tmp/whereami"
 export KEYTIMEOUT=1
+export TERM=xterm-256color
 
 # Plugins
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+

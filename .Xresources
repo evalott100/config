@@ -1,51 +1,45 @@
 ! ROFI Color theme
 rofi.color-enabled: true
-rofi.color-window: #383C4A, #2F343F, #5294E2
-rofi.color-normal: #2F343F, #ffffff, #2F343F, #2F343F, #5294E2
-rofi.color-active: #2F343F, #268bd2, #2F343F, #2F343F, #5294E2
-rofi.color-urgent: #2F343F, #383C4A, #383C4A, #383C4A, #383C4A
+rofi.color-window: #252936, #1f222d, #5294E2
+rofi.color-normal: #1f222d, #ffffff, #1f222d, #1f222d, #5294E2
+rofi.color-active: #1f222d, #268bd2, #1f222d, #1f222d, #5294E2
+rofi.color-urgent: #1f222d, #252936, #252936, #252936, #252936
 
 ! URXVT
+!UXTerm*termName: term-256color
 UXTerm.vt100.translations: #override \n\
   Ctrl <Key> minus: smaller-vt-font() \n\
   Ctrl <Key> plus: larger-vt-font()
 UXTerm*faceName: Input Mono
-UXTerm*faceSize: 12
+UXTerm*faceSize: 10
 UXTerm*dynamicColors: true
-UXTerm*utf8: 2
-URxvt.externalBorder: 0
-URxvt.internalBorder: 0
-URxvt.letterSpace: -1
+UXTerm.vt100.bellIsUrgent: true
+UXTerm*utf8: 1
+UXTerm*locale: true
+UXTerm.externalBorder: 0
+UXTerm.internalBorder: 0
+UXTerm.vt100.saveLines: 10000
 
 ! Colors
-*foreground: #d3dae3
-*background: #2f343f
-*highlight: #383c4a
+*foreground: #ffffff
+*background: #1f222d
+*highlight: #252936
 *borderColor: #2f343f
 *BorderWidth: 0
-! Grey
-*color0: #2f343f
-*color8: #383c4a
-! Red
-*color1: #ff5555
-! Pink
-*color9: #ff79c6
-! Green
+
+*color0: #1f222d
+*color1: #ff0000
 *color2: #50fa7b
-*color10: #50fa7b
-! Orange
 *color3: #ffb86c
-! Yellow
-*color11: #f1fa8c
-! Blue
 *color4: #5294e2
-*color12: #5294e2
-! Purple
 *color5: #bd93f9
-*color13: #bd93f9
-! Cyan
 *color6: #8be9fd
+*color7: #7780a1
+*color8: #252936
+*color9: #ff0000
+*color10: #50fa7b
+*color11: #f1fa8c
+*color12: #5294e2
+*color13: #ff79c6
 *color14: #8be9fd
-! Gray
-*color7: #6272a4
 *color15: #d3dae3

@@ -1,0 +1,194 @@
+[colors]
+background = #252936
+background-alt = #252936
+foreground = #ffffff
+foreground-alt = #ffffff
+primary = #ffffff
+secondary = #ffffff
+alert = #bd2c40
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+[bar/bar2]
+override-redirect = false
+width = 100%
+height = 17
+offset-x = 0
+offset-y = 0
+bottom = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+overline-size = 0
+overline-color = #f00
+underline-size = 0
+underline-color = #00f
+
+spacing = 1
+spacing-background = #252936
+padding-left = 0
+padding-right = 0
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = Input Mono:size=10:weight=regular;2
+font-1 = FontAwesome:size=10:weight=regular;2
+
+modules-left = 
+modules-center = i3
+modules-right = cmus ip temp cpu memory battery volume date time
+
+modules-right-background = #252936
+
+monitor = VGA1
+
+
+
+[bar/bar1]
+override-redirect = false
+width = 100%
+height = 17
+offset-x = 0
+offset-y = 0
+bottom = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+overline-size = 0
+overline-color = #f00
+underline-size = 0
+underline-color = #00f
+
+spacing = 1
+spacing-background = #252936
+padding-left = 0
+padding-right = 0
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = Input Mono:size=10:weight=regular;2
+font-1 = FontAwesome:size=10:weight=regular;2
+
+modules-left =
+modules-center = i3
+modules-right = cmus ip temp cpu memory battery volume date time
+
+modules-right-background = #252936
+
+monitor = ${env:MONITOR:}
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+strip-wsnumbers = true
+
+label-mode = R
+label-mode-padding = 1
+label-mode-foreground = #5294e2
+label-mode-background = #252936
+
+label-focused = %name%
+label-focused-foreground = #ffffff
+label-focused-background = #1f222d
+label-focused-underline = #fba922
+label-focused-padding = 1
+
+label-unfocused = %name%
+label-unfocused-padding = 1
+label-unfocused-foreground = #7780a1
+label-unfocused-background = #252936
+
+label-urgent = %name%
+label-urgent-background = #252936
+label-urgent-foreground = #50fa7b
+label-urgent-padding = 1
+
+label-visible = %name%
+label-visible-foreground = #7780a1
+label-visible-background = #1f222d
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+[module/date]
+type = custom/script
+interval = 1
+exec = printf "`date +"%#a %d/%m"`"; [[ -z "${BLOCK_BUTTON}"  ]] &
+label-foreground = #7780a1
+label-background = #252936
+
+[module/time]
+type = custom/script
+interval = 0.5
+exec = printf "`date +"%H:%M:%S"` "; [[ -z "${BLOCK_BUTTON}"  ]] &
+label-foreground = #7780a1
+label-background = #252936
+
+[module/currentWindow]
+type = custom/script
+interval = 1
+exec = xdotool getwindowfocus getwindowname
+label-foreground = #ff005f
+label-background = #252936
+
+[module/cmus]
+type = custom/script
+interval = 0.5
+exec = ~/.config/i3/scripts/cmus.sh
+if_exec = "pgrep cmus"
+label-foreground = #252936
+label-background = #ff79c6
+
+[module/volume]
+type = custom/script
+interval = 0.1
+exec = ~/.config/i3/scripts/volume.sh
+label-foreground = #7780a1
+label-background = #252936
+
+[module/battery]
+type = custom/script
+interval = 1
+exec = ~/.config/i3/scripts/battery.sh
+label-foreground = #7780a1
+label-background = #252936
+
+[module/wifi]
+type = custom/script
+interval = 1
+exec = ~/.config/i3/scripts/wifi.sh
+label-foreground = #7780a1
+label-background = #252936
+
+[module/temp]
+exec = printf 0;printf $(sensors | sed -n '4p' | cut -d "+" -f 2 | cut -d '.' -f 1);printf " "
+type = custom/script
+interval = 1
+label-foreground = #7780a1
+label-background = #252936
+
+[module/ip]
+exec = ~/.config/i3/scripts/wifi.sh
+type = custom/script
+interval = 1
+label-foreground = #7780a1
+label-background = #252936
+
+[module/memory]
+type = custom/script
+interval = 1
+exec = free | awk '/Mem/{printf("0%.0f \n"), $3/$2*100}'
+label-foreground = #7780a1
+label-background = #252936
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+label = 0%percentage% 
+label-foreground = #7780a1
+label-background = #252936
