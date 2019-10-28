@@ -1,9 +1,7 @@
 #! /bin/bash
 
-cp -r ~/.config/i3 .
-mkdir nvim
-cp -r ~/.config/nvim/colors/customized.vim ./nvim
-cp -r ~/.config/nvim/bundle/vim-airline-themes/autoload/airline/themes/customized.vim ./nvim/airline_customized.nvim
+cp -r ~/.i3 i3
+cp ~/.vimrc vim/vimrc
 cp -r ~/.config/polybar .
-cp -r ~/.Xresources .
-cp -r ~/.zshrc .
+cp -r ~/.Xresources Xresources
+cp -r ~/.zshrc zshrc
